@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MIKO Nick Finder - Stylish Nicknames</title>
+<meta name="description" content="Create stylish MIKO nicknames for Free Fire, PUBG and gaming. Copy your favorite nickname instantly.">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #6c3cff;
+    --primary2: #8b5cf6;
+    --bg: #f5f6fa;
+    --card: #ffffff;
+    --text: #171923;
+    --muted: #747986;
+    --border: #e7e8ed;
+}
+
+body.dark {
+    --bg: #101116;
+    --card: #191b23;
+    --text: #ffffff;
+    --muted: #a5a8b2;
+    --border: #2b2e38;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: .25s;
+}
+
+/* HEADER */
+
+header {
+    background: linear-gradient(135deg, #5b21b6, #7c3aed, #9333ea);
+    color: white;
+}
+
+.nav {
+    max-width: 1150px;
+    margin: auto;
+    padding: 17px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #ddd6fe;
+}
+
+.dark-btn {
+    border: 0;
+    background: rgba(255,255,255,.15);
+    color: white;
+    padding: 10px 13px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 55px 20px 70px;
+}
+
+.hero h1 {
+    font-size: clamp(35px, 6vw, 60px);
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 17px;
+    opacity: .9;
+    margin-bottom: 28px;
+}
+
+.generator {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 8px;
+    border-radius: 15px;
+    display: flex;
+    box-shadow: 0 15px 40px rgba(0,0,0,.18);
+}
+
+.generator input {
+    flex: 1;
+    border: 0;
+    outline: 0;
+    padding: 15px;
+    font-size: 17px;
+    color: #222;
+    border-radius: 12px;
+}
+
+.generate {
+    background: #111827;
+    color: white;
+    border: 0;
+    padding: 0 23px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.generate:hover {
+    background: #000;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1100px;
+    margin: -25px auto 50px;
+    padding: 0 20px;
+}
+
+/* RANDOM */
+
+.random-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.random-box strong {
+    font-size: 18px;
+}
+
+.random-box p {
+    color: var(--muted);
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.random-btn {
+    background: var(--primary);
+    color: white;
+    border: 0;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* SEARCH */
+
+.search {
+    margin-bottom: 15px;
+}
+
+.search input {
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    font-size: 16px;
+}
+
+/* CATEGORIES */
+
+.categories {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+}
+
+.category {
+    white-space: nowrap;
+    padding: 10px 16px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.category.active,
+.category:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* TITLE */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0 15px;
+}
+
+.section-title h2 {
+    font-size: 23px;
+}
+
+.count {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* NICK GRID */
+
+.nick-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.nick-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: .2s;
+}
+
+.nick-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0,0,0,.08);
+}
+
+.nick-text {
+    flex: 1;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.copy {
+    border: 0;
+    background: #ede9fe;
+    color: #5b21b6;
+    padding: 9px 13px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.copy:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* INFO */
+
+.info {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 30px;
+    line-height: 1.7;
+}
+
+.info h2 {
+    margin-bottom: 8px;
+}
+
+.info p {
+    color: var(--muted);
+}
+
+/* FOOTER */
+
+footer {
+    background: #111318;
+    color: #aaa;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+footer strong {
+    color: white;
+}
+
+/* MOBILE */
+
+@media(max-width: 650px) {
+
+    .hero {
+        padding: 40px 15px 55px;
+    }
+
+    .generator {
+        flex-direction: column;
+        padding: 7px;
+    }
+
+    .generator input {
+        width: 100%;
+    }
+
+    .generate {
+        padding: 14px;
+    }
+
+    .random-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .random-btn {
+        width: 100%;
+    }
+
+    .nick-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nick-text {
+        font-size: 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="nav">
+        <div class="logo">
+            🔥 MIKO<span>NickFinder</span>
+        </div>
+
+        <button class="dark-btn" onclick="toggleDark()" id="themeBtn">
+            🌙
+        </button>
+    </div>
+
+    <div class="hero">
+
+        <h1>MIKO Nick Finder</h1>
+
+        <p>
+            Create stylish gaming names for Free Fire, PUBG & more.
+        </p>
+
+        <div class="generator">
+
+            <input
+                id="nameInput"
+                value="MIKO"
+                placeholder="Enter your name..."
+                onkeydown="enterGenerate(event)"
+            >
+
+            <button
+                class="generate"
+                onclick="generate()"
+            >
+                ✨ Generate
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+<main class="container">
+
+    <div class="random-box">
+
+        <div>
+            <strong>🎲 Feeling lucky?</strong>
+            <p>Generate a random stylish MIKO nickname.</p>
+        </div>
+
+        <button class="random-btn" onclick="randomNick()">
+            Random Nickname
+        </button>
+
+    </div>
+
+    <div class="search">
+
+        <input
+            id="search"
+            placeholder="🔍 Search your favorite nickname..."
+            oninput="searchNick()"
+        >
+
+    </div>
+
+    <div class="categories">
+
+        <button
+            class="category active"
+            onclick="category('all',this)">
+            All
+        </button>
+
+        <button
+            class="category"
+            onclick="category('pro',this)">
+            ⚡ Pro
+        </button>
+
+        <button
+            class="category"
+            onclick="category('royal',this)">
+            👑 Royal
+        </button>
+
+        <button
+            class="category"
+            onclick="category('cute',this)">
+            💖 Cute
+        </button>
+
+        <button
+            class="category"
+            onclick="category('symbols',this)">
+            ✨ Symbols
+        </button>
+
+    </div>
+
+    <div class="section-title">
+
+        <h2>🔥 Stylish Nicknames</h2>
+
+        <span class="count" id="count"></span>
+
+    </div>
+
+    <div id="nickGrid" class="nick-grid"></div>
+
+
+    <section class="info">
+
+        <h2>About MIKO Nick Finder</h2>
+
+        <p>
+            MIKO Nick Finder helps gamers create stylish and unique
+            nicknames. Enter any name above, choose your favorite style,
+            and copy it instantly.
+        </p>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 <strong>MIKO Nick Finder</strong>
+    </p>
+
+    <p>
+        Stylish names made for gamers 🎮
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   NICKNAME STYLES
+========================= */
+
+const styles = [
+
+    // PRO
+
+    {type:"pro", make:n=>"亗 "+n+" 亗"},
+    {type:"pro", make:n=>"乂 "+n+" 乂"},
+    {type:"pro", make:n=>"〆"+n+"〆"},
+    {type:"pro", make:n=>"メ"+n+"メ"},
+    {type:"pro", make:n=>"乄"+n+"乄"},
+    {type:"pro", make:n=>"么"+n+"么"},
+    {type:"pro", make:n=>"×͜× "+n},
+    {type:"pro", make:n=>"『"+n+"』"},
+    {type:"pro", make:n=>"【"+n+"】"},
+    {type:"pro", make:n=>"彡"+n+"彡"},
+    {type:"pro", make:n=>"ツ"+n+"ツ"},
+    {type:"pro", make:n=>"シ"+n+"シ"},
+
+    // ROYAL
+
+    {type:"royal", make:n=>"♛ "+n+" ♛"},
+    {type:"royal", make:n=>"♕ "+n+" ♕"},
+    {type:"royal", make:n=>"👑 "+n},
+    {type:"royal", make:n=>n+" 👑"},
+    {type:"royal", make:n=>"꧁༒"+n+"༒꧂"},
+    {type:"royal", make:n=>"꧁"+n+"꧂"},
+    {type:"royal", make:n=>"༺"+n+"༻"},
+    {type:"royal", make:n=>"★彡"+n+"彡★"},
+
+    // CUTE
+
+    {type:"cute", make:n=>"♡ "+n+" ♡"},
+    {type:"cute", make:n=>"♥ "+n+" ♥"},
+    {type:"cute", make:n=>"ꨄ "+n+" ꨄ"},
+    {type:"cute", make:n=>"✿ "+n+" ✿"},
+    {type:"cute", make:n=>"🌸 "+n+" 🌸"},
+    {type:"cute", make:n=>"☆ "+n+" ☆"},
+    {type:"cute", make:n=>"ミ★ "+n+" ★彡"},
+
+    // SYMBOLS
+
+    {type:"symbols", make:n=>"☬"+n+"☬"},
+    {type:"symbols", make:n=>"۝"+n+"۝"},
+    {type:"symbols", make:n=>"๛"+n+"๛"},
+    {type:"symbols", make:n=>"༒"+n+"༒"},
+    {type:"symbols", make:n=>"⚡"+n+"⚡"},
+    {type:"symbols", make:n=>"★"+n+"★"},
+    {type:"symbols", make:n=>"✧"+n+"✧"},
+    {type:"symbols", make:n=>"♠"+n+"♠"},
+
+    // FANCY
+
+    {type:"pro", make:n=>fancy(n)},
+    {type:"pro", make:n=>"𝑴𝑰𝑲𝑶"},
+    {type:"pro", make:n=>"𝕄𝕀𝕂𝕆"},
+    {type:"pro", make:n=>"𝓜𝓘𝓚𝓞"},
+    {type:"pro", make:n=>"𝗠𝗜𝗞𝗢"},
+    {type:"pro", make:n=>"𝙈𝙄𝙆𝙊"}
+];
+
+
+/* =========================
+   FANCY FONT
+========================= */
+
+function fancy(text) {
+
+    const normal =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+    const fancy =
+    "𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ" +
+    "𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫";
+
+    let result = "";
+
+    for (let c of text) {
+
+        let i = normal.indexOf(c);
+
+        result += i >= 0 ? fancy[i] : c;
+
+    }
+
+    return result;
+}
+
+
+/* =========================
+   STATE
+========================= */
+
+let currentCategory = "all";
+let allNames = [];
+
+
+/* =========================
+   GENERATE
+========================= */
+
+function generate() {
+
+    let name =
+    document.getElementById("nameInput")
+    .value
+    .trim();
+
+    if (!name) {
+        name = "MIKO";
+    }
+
+    name = name.toUpperCase();
+
+    allNames = styles.map(style => ({
+        name: style.make(name),
+        type: style.type
+    }));
+
+    render();
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function render() {
+
+    const grid =
+    document.getElementById("nickGrid");
+
+    const query =
+    document.getElementById("search")
+    .value
+    .toLowerCase();
+
+    grid.innerHTML = "";
+
+    let filtered =
+    allNames.filter(item => {
+
+        let categoryOK =
+        currentCategory === "all" ||
+        item.type === currentCategory;
+
+        let searchOK =
+        item.name.toLowerCase()
+        .includes(query);
+
+        return categoryOK && searchOK;
+
+    });
+
+    document.getElementById("count").innerText =
+    filtered.length + " names";
+
+    filtered.forEach(item => {
+
+        const card =
+        document.createElement("div");
+
+        card.className = "nick-card";
+
+        const text =
+        document.createElement("div");
+
+        text.className = "nick-text";
+
+        text.textContent = item.name;
+
+        const button =
+        document.createElement("button");
+
+        button.className = "copy";
+
+        button.textContent = "Copy";
+
+        button.onclick = () =>
+        copyName(item.name, button);
+
+        card.appendChild(text);
+        card.appendChild(button);
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+function copyName(name, button) {
+
+    navigator.clipboard.writeText(name);
+
+    button.textContent = "✓ Copied";
+
+    setTimeout(() => {
+        button.textContent = "Copy";
+    }, 1200);
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+function category(type, button) {
+
+    currentCategory = type;
+
+    document
+    .querySelectorAll(".category")
+    .forEach(x =>
+        x.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+    render();
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchNick() {
+    render();
+}
+
+
+/* =========================
+   RANDOM
+========================= */
+
+function randomNick() {
+
+    if (allNames.length === 0) {
+        generate();
+    }
+
+    const random =
+    allNames[
+        Math.floor(
+            Math.random() * allNames.length
+        )
+    ];
+
+    navigator.clipboard.writeText(random.name);
+
+    alert(
+        "🎉 Random nickname copied!\n\n" +
+        random.name
+    );
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDark() {
+
+    document.body.classList.toggle("dark");
+
+    const button =
+    document.getElementById("themeBtn");
+
+    if (document.body.classList.contains("dark")) {
+        button.textContent = "☀️";
+        localStorage.setItem("theme","dark");
+    } else {
+        button.textContent = "🌙";
+        localStorage.setItem("theme","light");
+    }
+
+}
+
+
+/* =========================
+   ENTER KEY
+========================= */
+
+function enterGenerate(event) {
+
+    if (event.key === "Enter") {
+        generate();
+    }
+
+}
+
+
+/* =========================
+   LOAD THEME
+========================= */
+
+if (localStorage.getItem("theme") === "dark") {
+
+    document.body.classList.add("dark");
+
+    document.getElementById("themeBtn")
+    .textContent = "☀️";
+
+}
+
+
+/* START */
+
+generate();
+
+</script>
+
+</body>
+  </html>
